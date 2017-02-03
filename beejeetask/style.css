@@ -1,0 +1,141 @@
+*{
+	margin:0;
+	padding:0;
+	text-decoration:none;
+	list-style-type:none;
+}
+
+#menu{
+	width:200px;
+	height:100vh;
+	background-color:purple;
+	float:left;
+}
+
+#menu li{
+	border-bottom:1px solid lightgrey;
+	padding:10px 0 10px 10px;
+}
+
+#menu a{
+	color:white;
+	font:22px sans-serif;
+	cursor:pointer;
+}
+
+#menu a:hover{
+	color:orange;
+}
+
+#addTask{
+	float:left;
+	width:250px;
+	margin:25px 0 0 10px;
+}
+
+#addTask input{
+	padding:5px 5px 5px 5px;
+	margin: 0 0 10px 0;
+	width:250px;
+}
+
+#task{
+	resize:none;
+	width:250px;
+	height:100px;
+}
+
+#addTask input:nth-of-type(3){
+	margin:0 0 10px -5px;
+}
+
+#showTasks{
+	margin:25px 0 0 10px;
+	float:left;
+}
+
+#showTask{
+	padding:5px 5px 5px 5px;
+	background-color:pink;
+	margin:0 0 10px 0;
+}
+
+#showTask span{
+	text-decoration:underline;
+}
+
+#admin{
+	float:left;
+	margin:25px 0 0 10px;
+}
+
+#admin input{
+	padding:5px 5px 5px 5px;
+	margin: 0 0 10px 0;
+	width:250px;
+}
+
+#buttonEnter{
+	cursor:pointer;
+}
+
+#notCheckedTask{
+	float:left;
+	border:1px solid lightgrey;
+	width:800px;
+	height:500px;
+}
+
+#notChecked{
+	margin:10px 0 0 0;
+	padding:0 0 10px 10px;
+	border-bottom:1px solid lightgrey;
+}
+
+#idTask{
+	display:none;
+}
+
+#sort{
+	padding:10px 0 10px 0;
+	margin:0 0 0 10px;
+	float:left;
+	width:70%;
+}
+
+#sort label{
+	margin:0 10px 0 0;
+}
+
+#sort input[type=submit]{
+	padding:5px 5px 5px 5px;
+}
+
+#show{
+	margin:340px 0 0 -250px;
+	float:left;
+	padding:5px 5px 5px 5px;
+	cursor:pointer;
+}
+
+#hidden{
+	display:none;
+	position:absolute;
+	width:300px;
+	left:500px;
+	top:200px;
+	border:1px solid grey;
+	padding:10px 10px 10px 10px;
+}
+
+#hidden span{
+	display:block;
+	border-bottom:1px solid lightgrey;
+	margin:5px 0 0 0;
+}
+
+#close{
+	padding:5px 5px 5px 5px;
+	margin:10px 0 0 0;
+	cursor:pointer;
+}

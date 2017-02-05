@@ -39,6 +39,7 @@
 									Задача от <span>'.$row['name'].' </span>
 									c email <span>'.$row['email'].'</span> : 
 									<span>'.$row['text'].'</span> со статусом <span>'.$row['status'].' </span>
+									<img src="'.$row['picture'].'" width="320" height="240"/>
 								</div>
 							';
 						} while($row = mysqli_fetch_array($result));

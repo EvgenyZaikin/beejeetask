@@ -6,14 +6,56 @@
 		$name = strip_tags($_POST['name']);
 		$email = strip_tags($_POST['email']);
 		$task = strip_tags($_POST['task']);
-		$picture = strip_tags($_POST['picture']);
+		$pictureFile = $_FILES['picture'];
 		
-		$pictureExtension = array_pop(explode('.', $picture));
+		$pictureExtension = array_pop(explode('.', $pictureFile['name']));
 		if($pictureExtension == 'jpg' || $pictureExtension == 'gif' || $pictureExtension == 'png'){
 			$directory = 'picture/';
 			$newName = time().'.'.$pictureExtension;
-			$in = $directory.$newName;
-			move_uploaded_file($_FILES['picture']['tmp_name'], $in);
+			$in = dirname(__FILE__).'/'.$direcory.$newName;
+			if(!is_dir($in)){
+				mkdir(dirname($in));
+			}
+			
+			if($pictureExtension == 'jpg'){
+				$source = imagecreatefromjpeg($pictureFile['tmp_name']);
+			} else if($pictureExtension == 'gif'){
+				$source = imagecreatefromgif($pictureFile['tmp_name']);
+			} else if($pictureExtension == 'png'){
+				$source = imagecreatefrompng($pictureFile['tmp_name']);
+			}
+			$widthSource = imagesx($source);
+			$heightSource = imagesy($source);
+			if($widthSource > 320){
+				$newPicture = imagecreatetruecolor(320, 240);
+				imagecopyresampled($newPicture, $source, 0, 0, 0, 0, 320, 240, $widthSource, $heightSource);
+				if($pictureExtension == 'jpg'){
+					$pictureFile['tmp_name'] = imagejpeg($newPicture, $in);
+					imagedestroy($source);
+					imagedestroy($newPicture);
+				}else if($pictureExtension == 'gif'){
+					$pictureFile['tmp_name'] = imagegif($newPicture, $in);
+					imagedestroy($source);
+					imagedestroy($newPicture);
+				}else if($pictureExtension == 'png'){
+					$pictureFile['tmp_name'] = imagepng($newPicture, $in);
+					imagedestroy($source);
+					imagedestroy($newPicture);
+				}
+			} else {
+				if($pictureExtension == 'jpg'){
+					$pictureFile['tmp_name'] = imagejpeg($source, $in);
+					imagedestroy($source);
+				} else if($pictureExtension == 'gif'){
+					$pictureFile['tmp_name'] = imagegif($source, $in);
+					imagedestroy($source);
+				}else if($pictureExtension == 'png'){
+					$pictureFile['tmp_name'] = imagepng($source, $in);
+					imagedestroy($source);
+				}
+			}
+	
+			move_uploaded_file($pictureFile['tmp_name'], $in);
 			$picture = $newName;
 		} else $picture = '';
 		
@@ -49,5 +91,4 @@
 		
 		header('Location:listTasks.php');
 	}
-	
 ?>

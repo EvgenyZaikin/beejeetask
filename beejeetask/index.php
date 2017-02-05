@@ -16,8 +16,7 @@
 			</ul>
 		</div>
 		<div id="content">
-			<!-- Если выставить enctype, то информация не заноситься в базу данных -->
-			<form action="allQuery.php" method="POST" <!--enctype="multipart/form-data"--> id="addTask">
+			<form action="allQuery.php" method="POST" enctype="multipart/form-data" id="addTask">
 				<input type="text" name="name" id="name" placeholder="Ваше имя" required />
 				<input type="email" name="email" id="email" placeholder="Ваш email" required />
 				<p>Текст задачи:</p>
